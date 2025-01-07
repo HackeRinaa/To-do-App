@@ -1,14 +1,6 @@
 import React, { useState } from "react";
-import TaskItem from "../taskItem/TaskItem";
+import TaskItem from "../TaskItem";
 import "./taskList.css";
-
-// Define the type for a task
-interface Task {
-  id: number;
-  title: string;
-  completed: boolean;
-  color: string;
-}
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([
@@ -18,7 +10,9 @@ const TaskList: React.FC = () => {
   ]);
 
   const [newTaskTitle, setNewTaskTitle] = useState<string>("");
-  const [newTaskColor, setNewTaskColor] = useState<string>("#ffeb3b");
+  const [newTaskColor, setNewTaskColor] = useState<string>("#FFF8DE");
+  const [filter, setFilter] = useState<string>("all"); 
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleAddTask = () => {
     if (newTaskTitle.trim() === "") return;
@@ -40,31 +34,65 @@ const TaskList: React.FC = () => {
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
-
-    // Set a timer to remove the task after 3 seconds if completed
-    const taskToRemove = tasks.find((task) => task.id === id);
-    if (taskToRemove && !taskToRemove.completed) {
-      setTimeout(() => {
-        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-      }, 1500); 
-    }
   };
 
+  // Filter tasks based on selected filter
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "completed") return task.completed;
+    if (filter === "notCompleted") return !task.completed;
+
+        // Apply "search query" filter (case-insensitive, starts with)
+        if (searchQuery.trim() !== "" && !task.title.toLowerCase().startsWith(searchQuery.toLowerCase())) {
+          return false;
+        }
+    
+        return true;
+  });
+
   return (
-    <div className="container">
-      <h1 className="title">Your Sticky Notes</h1>
-      <div className="taskGrid">
-        {tasks.map((task) => (
-          <TaskItem key={task.id} task={task} toggleComplete={handleToggleComplete} />
-        ))}
+    <div className="taskListContainer">
+      <h1 className="title">Your Todos</h1>
+
+      {/* Filter Buttons */}
+      <div className="filterContainer">
+        <button
+          className={`filterButton ${filter === "all" ? "active" : ""}`}
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
+        <button
+          className={`filterButton ${filter === "completed" ? "active" : ""}`}
+          onClick={() => setFilter("completed")}
+        >
+          Completed
+        </button>
+        <button
+          className={`filterButton ${filter === "notCompleted" ? "active" : ""}`}
+          onClick={() => setFilter("notCompleted")}
+        >
+          Not Completed
+        </button>
       </div>
 
-      <div className="addTaskForm">
+            {/* Search Bar */}
+            <div className="searchContainer">
         <input
           type="text"
+          placeholder="Search by title..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="searchInput"
+        />
+      </div>
+
+      {/* Task Input */}
+      <div className="taskInputContainer">
+        <input
+          type="text"
+          placeholder="New Task Title"
           value={newTaskTitle}
           onChange={(e) => setNewTaskTitle(e.target.value)}
-          placeholder="Enter task title"
           className="taskInput"
         />
         <input
@@ -77,8 +105,28 @@ const TaskList: React.FC = () => {
           Add Task
         </button>
       </div>
+
+      {/* Render Filtered Tasks */}
+      <div className="taskItemsContainer">
+        {filteredTasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            toggleComplete={handleToggleComplete}
+          />
+        ))}
+      </div>
     </div>
   );
 };
+
+
+interface Task {
+  id: number;
+  title: string;
+  completed: boolean;
+  color: string;
+}
+
 
 export default TaskList;
