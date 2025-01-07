@@ -50,5 +50,9 @@ Open the page from
 When updating a file, the page will auto reload
 
 ## Demo
+### Step 1:
 ![Screenshot 2025-01-07 144413](https://github.com/user-attachments/assets/742df7bd-f0e9-4517-8aee-576191343971)
+### Step 2:
+![image](https://github.com/user-attachments/assets/337d6cd5-47d1-4411-916e-662104e8051c)
+
 
