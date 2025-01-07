@@ -48,3 +48,7 @@ Open the page from
 <http://localhost:5000>
 
 When updating a file, the page will auto reload
+
+## Demo
+![Screenshot 2025-01-07 144413](https://github.com/user-attachments/assets/742df7bd-f0e9-4517-8aee-576191343971)
+
