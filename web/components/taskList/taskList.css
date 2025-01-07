@@ -1,0 +1,57 @@
+.container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .taskGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .addTaskForm {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .taskInput {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .colorPicker {
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .addButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #333;
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addButton:hover {
+    background-color: #333;
+    color: white;
+  }
+  
