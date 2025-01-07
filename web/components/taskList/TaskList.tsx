@@ -3,6 +3,7 @@ import TaskItem from "../TaskItem";
 import "./taskList.css";
 
 const TaskList: React.FC = () => {
+
   const [tasks, setTasks] = useState<Task[]>([
     { id: 1, title: "Learn React", completed: false, color: "#A6AEBF" },
     { id: 2, title: "Build a To-Do App", completed: false, color: "#C5D3E8" },
@@ -38,8 +39,8 @@ const TaskList: React.FC = () => {
 
   // Filter tasks based on selected filter
   const filteredTasks = tasks.filter((task) => {
-    if (filter === "completed") return task.completed;
-    if (filter === "notCompleted") return !task.completed;
+    if (filter === "completed" && !task.completed) return false;
+    if (filter === "notCompleted" && task.completed) return false;
 
         // Apply "search query" filter (case-insensitive, starts with)
         if (searchQuery.trim() !== "" && !task.title.toLowerCase().startsWith(searchQuery.toLowerCase())) {
@@ -119,7 +120,6 @@ const TaskList: React.FC = () => {
     </div>
   );
 };
-
 
 interface Task {
   id: number;
