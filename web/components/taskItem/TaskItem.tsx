@@ -1,17 +1,6 @@
 import React from "react";
 import "./taskItem.css";
 
-// Define props type for TaskItem
-interface TaskItemProps {
-  task: {
-    id: number;
-    title: string;
-    completed: boolean;
-    color: string;
-  };
-  toggleComplete: (id: number) => void;
-}
-
 const TaskItem: React.FC<TaskItemProps> = ({ task, toggleComplete }) => {
   return (
     <div className="taskItem" style={{ backgroundColor: task.color }}>
@@ -29,4 +18,14 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, toggleComplete }) => {
   );
 };
 
+
+interface TaskItemProps {
+  task: {
+    id: number;
+    title: string;
+    completed: boolean;
+    color: string;
+  };
+  toggleComplete: (id: number) => void;
+}
 export default TaskItem;

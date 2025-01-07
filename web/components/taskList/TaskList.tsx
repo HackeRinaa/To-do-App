@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import TaskItem from "../taskItem/TaskItem";
+import TaskItem from "../TaskItem";
 import "./taskList.css";
 
-// Define the type for a task
-interface Task {
-  id: number;
-  title: string;
-  completed: boolean;
-  color: string;
-}
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([
@@ -40,14 +33,6 @@ const TaskList: React.FC = () => {
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
-
-    // Set a timer to remove the task after 3 seconds if completed
-    const taskToRemove = tasks.find((task) => task.id === id);
-    if (taskToRemove && !taskToRemove.completed) {
-      setTimeout(() => {
-        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
-      }, 1500); 
-    }
   };
 
   return (
@@ -80,5 +65,13 @@ const TaskList: React.FC = () => {
     </div>
   );
 };
+
+// Define the type for a task
+interface Task {
+    id: number;
+    title: string;
+    completed: boolean;
+    color: string;
+  }
 
 export default TaskList;
