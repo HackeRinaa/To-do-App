@@ -1,0 +1,93 @@
+  .taskItem {
+    width: 250px;
+    height: 250px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .taskItem.vanishing {
+    opacity: 0;
+  }
+  
+  .row {
+    display: flex;
+    align-items: stretch;
+    gap: 60px;
+  }
+
+  .taskTitle {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 200;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  .deleteButton {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .taskTitle.completed {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  
+  /* Hide the default checkbox */
+.custom-checkbox input {
+    display: none;
+}
+
+/* Create a custom checkbox */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.custom-checkbox .checkmark {
+    width: 20px; 
+    height: 20px; 
+    border: 2px solid #333; 
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Change the appearance when checked */
+.custom-checkbox input:checked + .checkmark {
+    background-color: #33333381; 
+    border-color: #333; 
+}
+
+/* Create the checkmark/indicator */
+.custom-checkbox .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 6px; 
+    top: 2px; 
+    width: 5px;
+    height: 10px; 
+    border: solid #333; 
+    border-width: 0 2px 2px 0; 
+    transform: rotate(45deg); 
+    opacity: 0; 
+    transition: opacity 0.3s;
+}
+
+/* Show the checkmark when checked */
+.custom-checkbox input:checked + .checkmark::after {
+    opacity: 1; 
+}
