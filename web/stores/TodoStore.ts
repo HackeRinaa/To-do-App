@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-export interface ITodo {
+export interface Todo {
   id: number;
   title: string;
   completed: boolean;
@@ -8,8 +8,9 @@ export interface ITodo {
 }
 
 export class TodoStore {
-  todos: ITodo[] = [];
-  filter: "all" | "completed" | "incomplete" = "all";
+  // todos is now an object not an array and is readonly
+  readonly todos: Record<number,Todo> = {};
+  filter: string = "all";
   searchQuery: string = "";
 
   constructor() {
@@ -17,49 +18,51 @@ export class TodoStore {
   }
 
   addTodo = (title: string, color: string) => {
-    const newTodo: ITodo = {
-      id: Date.now(),
-      title,
-      completed: false,
-      color,
-    };
-    this.todos.push(newTodo);
+    const id = Date.now();
+    this.todos[id] = { id, title, completed: false, color };
   };
 
   deleteTodo = (id: number) => {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
+    delete this.todos[id];
   };
 
   toggleComplete = (id: number) => {
-    this.todos = this.todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    );
+    if (this.todos[id]) {
+      this.todos[id].completed = !this.todos[id].completed;
+    }
   };
 
-  setFilter = (filter: "all" | "completed" | "incomplete") => {
+  setFilter = (filter: string) => {
     this.filter = filter;
+    console.log ("Filter changed ${}")
   };
 
   setSearchQuery = (query: string) => {
     this.searchQuery = query;
   };
 
-  get filteredTodos() {
-    let filtered = this.todos;
-    if (this.filter === "completed") {
-      filtered = filtered.filter((todo) => todo.completed);
-    } else if (this.filter === "incomplete") {
-      filtered = filtered.filter((todo) => !todo.completed);
-    }
-
-    if (this.searchQuery) {
-      filtered = filtered.filter((todo) =>
-        todo.title.toLowerCase().startsWith(this.searchQuery.toLowerCase())
-      );
-    }
-
-    return filtered;
+  get filteredTodos(): Todo[] {
+    const filterByStatus = (todo: Todo) => {
+      if (this.filter === "completed") {
+        return todo.completed;
+      }
+      if (this.filter === "incomplete") {
+        return !todo.completed;
+      }
+      return true; // 'all' filter returns all todos
+    };
+  
+    const filterBySearchQuery = (todo: Todo) => {
+      if (!this.searchQuery.trim()) {
+        return true; // If no search query, include all
+      }
+      return todo.title.toLowerCase().startsWith(this.searchQuery.toLowerCase());
+    };
+  
+    return Object.values(this.todos).filter(
+      (todo) => filterByStatus(todo) && filterBySearchQuery(todo)
+    );
   }
+  
 }
 
-export const todoStore = new TodoStore();

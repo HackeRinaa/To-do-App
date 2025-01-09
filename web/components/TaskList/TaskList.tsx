@@ -1,10 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import TaskItem from "../TaskItem";
-import { useTodoStore } from "../../stores/TodoStoreContext";
+import todoStore from "../../stores";
 
 const TaskList: React.FC = observer(() => {
-  const todoStore = useTodoStore();
 
   return (
     <div className="taskList">
@@ -12,8 +11,6 @@ const TaskList: React.FC = observer(() => {
         <TaskItem
           key={task.id}
           task={task}
-          onToggleComplete={todoStore.toggleComplete}
-          onDelete={todoStore.deleteTodo}
         />
       ))}
     </div>
