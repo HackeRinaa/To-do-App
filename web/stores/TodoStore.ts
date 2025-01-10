@@ -12,9 +12,19 @@ export class TodoStore {
   readonly todos: Record<number,Todo> = {};
   filter: string = "all";
   searchQuery: string = "";
+  newTitle: string = "";
+  newColor: string = "#9e7bab";
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  setNewTitle = (title: string) => {
+    this.newTitle = title;
+  }
+
+  setNewColor = (color: string) => {
+    this.newColor = color;
   }
 
   addTodo = (title: string, color: string) => {
