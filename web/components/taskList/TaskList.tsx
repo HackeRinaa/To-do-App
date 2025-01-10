@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import TaskItem from "../TaskItem";
+=======
+>>>>>>> master
 import "./taskList.css";
+import { observer } from "mobx-react-lite";
+import TaskItem from "../TaskItem";
+import todoStore from "../../stores";
 
+<<<<<<< HEAD
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([
@@ -34,37 +41,21 @@ const TaskList: React.FC = () => {
       )
     );
   };
+=======
+const TaskList: React.FC = observer(() => {
+>>>>>>> master
 
   return (
-    <div className="container">
-      <h1 className="title">Your Sticky Notes</h1>
-      <div className="taskGrid">
-        {tasks.map((task) => (
-          <TaskItem key={task.id} task={task} toggleComplete={handleToggleComplete} />
-        ))}
-      </div>
-
-      <div className="addTaskForm">
-        <input
-          type="text"
-          value={newTaskTitle}
-          onChange={(e) => setNewTaskTitle(e.target.value)}
-          placeholder="Enter task title"
-          className="taskInput"
+    <div className="taskList">
+      {todoStore.filteredTodos.map((task) => (
+        <TaskItem
+          key={task.id}
+          task={task}
         />
-        <input
-          type="color"
-          value={newTaskColor}
-          onChange={(e) => setNewTaskColor(e.target.value)}
-          className="colorPicker"
-        />
-        <button onClick={handleAddTask} className="addButton">
-          Add Task
-        </button>
-      </div>
+      ))}
     </div>
   );
-};
+});
 
 // Define the type for a task
 interface Task {

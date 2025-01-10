@@ -5,9 +5,6 @@ import "./taskItem.css";
 import { observer } from "mobx-react-lite";
 import todoStore from "../../stores";
 
-<<<<<<< HEAD
-const TaskItem: React.FC<TaskItemProps> = ({ task, toggleComplete }) => {
-=======
 interface TaskItemProps {
   task: Todo;
 }
@@ -22,7 +19,6 @@ const TaskItem: React.FC<TaskItemProps> = observer(({ task }) => {
     todoStore.deleteTodo(task.id);
   }
 
->>>>>>> master
   return (
     <div className="taskItem" style={{ backgroundColor: task.color }}>
       <div className="row">
@@ -44,14 +40,4 @@ const TaskItem: React.FC<TaskItemProps> = observer(({ task }) => {
   }
 );
 
-
-interface TaskItemProps {
-  task: {
-    id: number;
-    title: string;
-    completed: boolean;
-    color: string;
-  };
-  toggleComplete: (id: number) => void;
-}
 export default TaskItem;
