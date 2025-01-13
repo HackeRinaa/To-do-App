@@ -1,71 +1,102 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #aba0eb;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
   }
   
   .App {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    
+    .title {
+      font-size: 64px;
+      margin-bottom: 20px;
+      color: #007aff;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 50px;
+      padding: 0 20px;
+
+      .calendar-container {
+        max-width: 700px;
+        height: 100%;
+        margin-right: 0;
+      }
+
+      .task-container {
+        max-width: 500px;
+        margin: 20px auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+
+
+        .addTodo {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 20px;
+          align-items: center;
+          max-width: 600px;
+
+
+          
+          .taskInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: transparent;
+          }
+
+          .taskInput:focus {
+            outline: none;
+            border: 2px solid #007aff;
+          }
+
+          .colorPicker {
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+          }
+
+          .addButton {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #333;
+            background-color: transparent;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+          
+          .addButton:hover {
+            background-color: rgba(0, 123, 255,1);
+            color: white;
+          }
+
+        }
+      }
+
+      .tasklist-container {
+        padding: 20px;
+        max-width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        gap: 20px;
+      }
+
+    }
   }
   
-
-  .title {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-  }
-
-  .addTodo {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    align-items: center;
-    max-width: 600px
-  }
-
-  .taskInput {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: transparent;
-  }
-
-  .colorPicker {
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-  }
-
-  .addButton {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #333;
-    background-color: transparent;
-    border: 1px solid #333;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .addButton:hover {
-    background-color: #333;
-    color: white;
-  }
-  
-  .taskContainer {
-    padding: 20px;
-    max-width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    gap: 20px;
-  }

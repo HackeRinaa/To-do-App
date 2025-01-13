@@ -15,13 +15,16 @@
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
     cursor: pointer;
-    border: 1px solid #333;
+    border: 1px solid #ddd;
     background-color: transparent;
   }
   
 .filterButton.active {
-    background-color: #333;
+    background-color:  #007aff;
     color: white;
   }
   
@@ -30,7 +33,12 @@
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #333;
+    border: 1px solid #ddd;
     border-radius: 5px;
     background-color: transparent
+  }
+
+  .searchInput:focus {
+    border: 2px solid  #007aff;
+    outline: none;
   }
