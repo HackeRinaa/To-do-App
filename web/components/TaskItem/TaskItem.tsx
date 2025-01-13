@@ -1,9 +1,9 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
-import { Todo } from "../../stores/TodoStore";
+import  { Todo } from "../../stores/TodoStore/TodoStore";
 import "./taskItem.css";
 import { observer } from "mobx-react-lite";
-import todoStore from "../../stores";
+import todoStore from "../../stores/TodoStore";
 
 interface TaskItemProps {
   task: Todo;
