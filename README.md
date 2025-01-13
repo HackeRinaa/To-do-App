@@ -50,9 +50,25 @@ Open the page from
 When updating a file, the page will auto reload
 
 ## Demo
-### Step 1:
-![Screenshot 2025-01-07 144413](https://github.com/user-attachments/assets/742df7bd-f0e9-4517-8aee-576191343971)
-### Step 2: Added a filter bar
-![image](https://github.com/user-attachments/assets/337d6cd5-47d1-4411-916e-662104e8051c)
+# Todo List App
 
+A simple and intuitive Todo List application built with React and MobX for state management. This app allows users to manage their tasks efficiently, view tasks for specific dates using a calendar, and filter tasks based on their completion status.
+
+## Features
+
+- **Task Management**: Add, complete, and delete tasks.
+- **Calendar Integration**: Select a date to view tasks for that specific day.
+- **Task Filtering**: Filter tasks using three buttons:
+  - **All**: View all tasks.
+  - **Completed**: View only completed tasks.
+  - **Incomplete**: View only incomplete tasks.
+- **Search Bar**: Quickly search for tasks by name.
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **MobX**: A state management library that makes it simple to connect your state to your UI.
+- **React Calendar**: A calendar component for selecting dates.
+
+![Screenshot 2025-01-13 173212](https://github.com/user-attachments/assets/9b54961e-bea4-4417-9f89-95a9d522f938)
 
